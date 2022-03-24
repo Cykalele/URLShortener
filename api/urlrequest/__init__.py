@@ -3,7 +3,22 @@ import logging
 import azure.functions as func
 from urllib.parse import parse_qs
 
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    try:
+        req_body = req.get_json()
+        return func.HttpResponse(json.dumps([
+            {
+                'action': 'talk',
+                'text': 'Thank you for telling us how you feel.',
+            },
+        ]), mimetype='application/json')
+    except ValueError:
+        return func.HttpResponse(
+            "Could not parse request body.",
+            status_code=400
+        )
 
+"""
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("Python HTTP trigger function processed a request.")
 
@@ -17,7 +32,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(
         "You submitted this information: {long_url}", status_code=200
     )
-    """url = req.params.get('long_url')
+    url = req.params.get('long_url')
     if not url:
         try:
             req_body = req.get_json()
@@ -33,4 +48,5 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(
              "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
              status_code=200
-        )"""
+        )
+"""
