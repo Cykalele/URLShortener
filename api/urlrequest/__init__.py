@@ -1,6 +1,7 @@
 import logging
 import azure.functions as func
-"""
+
+
 from urllib.parse import parse_qs
 
 
@@ -44,3 +45,4 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             "Please pass a name on the query string or in the request body",
             status_code=400
         )
+"""
