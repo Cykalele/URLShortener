@@ -29,15 +29,15 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
     long_url = req.params.get('long_url')
-    if not name:
+    if not long_url:
         try:
             req_body = req.get_json()
         except ValueError:
             pass
         else:
-            name = req_body.get('long_url')
+            long_url = req_body.get('long_url')
 
-    if name:
+    if long_url:
         return func.HttpResponse(f"Hello {long_url}!")
     else:
         return func.HttpResponse(
