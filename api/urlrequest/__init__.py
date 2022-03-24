@@ -7,7 +7,7 @@ from urllib.parse import parse_qs
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("Python HTTP trigger function processed a request.")
 
-    url = req.params.get('long_url')
+    #url = req.params.post('long_url')
     if not url:
         try:
             req_body = req.get_json()
