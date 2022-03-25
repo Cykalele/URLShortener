@@ -36,17 +36,18 @@
 					<header class="mb-5"><h1>CC SHORTENER</h1></header>
 					<P class="mb-5">A cloud based URL Shortener that ensures a safe, fast & highly available service.</P>
 					
-                    <form action="https://ccurlshortener.azurewebsites.net/api/requestTrigger?code=EnkbZTNMLlnBLurHUj0d8deSqDBs18muyfwAUIJysRvFbjtGtJmqcg==" method="post" class="subscribe-form">
+                    <form action="./php/check_form.php" method="post" class="subscribe-form">
                	    	<div class="row form-section">
 
 							<div class="col-md-7 col-sm-7 col-xs-7">
 			                      <input name="long_url" type="text" class="form-control" id="long_url" placeholder="Enter your URL to be shortened..." required/>
 				  			</div>
 							<div class="col-md-5 col-sm-5 col-xs-5">
-								<button type="submit" class="tm-btn-subscribe">Shorten</button>
+								<button type="submit" name="shorten" class="tm-btn-subscribe">Shorten</button>
 							</div>
 						
 						</div>
+				
                     </form>
                     
 				
