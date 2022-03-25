@@ -1,15 +1,13 @@
 import logging
+from urllib import request
 import azure.functions as func
+import requests
 
 
 from urllib.parse import parse_qs
 
 # This function reacts to POST Requests
 def main(req: func.HttpRequest) -> func.HttpResponse:
-    # This function will parse the response of a form submitted using the POST method
-    # The request body is a Bytes object
-    # You must first decode the Bytes object to a string
-    # Then you can parse the string using urllib parse_qs
 
     logging.info("Python HTTP trigger function processed a request.")
     req_body_bytes = req.get_body()
@@ -19,7 +17,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     long_url = parse_qs(req_body)["long_url"][0]
 
-
+    #data_to_send = {"long_url": "{long_url}"}
+    request_to_function = requests.post("https://ccurlshortener.azurewebsites.net/api/requestTrigger?code=EnkbZTNMLlnBLurHUj0d8deSqDBs18muyfwAUIJysRvFbjtGtJmqcg==", data=long_url)
+    print(request_to_function.text)
     return func.HttpResponse(
         f"You submitted this information: {long_url}",
         status_code=200,
