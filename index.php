@@ -36,7 +36,7 @@
 					<header class="mb-5"><h1>CC SHORTENER</h1></header>
 					<P class="mb-5">A cloud based URL Shortener that ensures a safe, fast & highly available service.</P>
 					
-                    <form action="./php/check_form.php" method="post" class="subscribe-form">
+                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="subscribe-form">
                	    	<div class="row form-section">
 
 							<div class="col-md-7 col-sm-7 col-xs-7">
@@ -49,7 +49,15 @@
 						</div>
 				
                     </form>
-                    
+                    <?php
+
+					$long_url = $_POST['long_url']
+
+					if(isset($_POST['shorten']))
+					{
+					echo $long_url 
+					}
+					?>
 				
 
 					</div>
